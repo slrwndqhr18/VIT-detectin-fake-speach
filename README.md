@@ -47,7 +47,11 @@ Important thing in here is you need to convert audio data into the CQT image. th
 ## Result
 
 
-<img width="208" alt="image" src="https://github.com/user-attachments/assets/ebd55bf7-7290-48b8-889a-ad1054cc335b" />
+<img width="30%" alt="image" src="https://github.com/user-attachments/assets/ebd55bf7-7290-48b8-889a-ad1054cc335b" />
 
 
-About 95% accuracy, but there is a problem in here
+About 95% accuracy, but there is a problem in here.</br>
+The scheduler that I used in here is not optimized. It works in low epoch number, but it causes error if the number of epoch is high.</br>So using the same code is ok, but before to use this, I should find more great schduler.
+
+
+Test was conducted epoch=8, and the result was great.

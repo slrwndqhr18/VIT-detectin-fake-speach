@@ -42,3 +42,10 @@ Important thing in here is you need to convert audio data into the CQT image. th
 - /model/Executor.py is the entry point of ML model. It is  a class to load params and define model train / test / run process.
 - For the reduction of preprocessing time, parallel programin is used in here.
 - There is the code about amp, and this reduced training time alot.
+
+
+## Result
+
+
+<img width="208" alt="image" src="https://github.com/user-attachments/assets/ebd55bf7-7290-48b8-889a-ad1054cc335b" />
+But there is a problem in here

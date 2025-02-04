@@ -48,4 +48,6 @@ Important thing in here is you need to convert audio data into the CQT image. th
 
 
 <img width="208" alt="image" src="https://github.com/user-attachments/assets/ebd55bf7-7290-48b8-889a-ad1054cc335b" />
-But there is a problem in here
+
+
+About 95% accuracy, but there is a problem in here

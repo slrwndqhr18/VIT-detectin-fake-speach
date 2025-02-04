@@ -1,0 +1,76 @@
+optimizer: "adam"
+executeMode: "test"
+hyperParams:
+  # Unusing params
+  #dec_layers: 1 #num of decoder layers == dec_in
+  #output: 0
+  #d_ff: 256 #2048 #dimension of fcn
+  #dec_in: 7 #num of decoder layers == dec_in
+  #enc_layers: 3 #2 #num of encoder
+  #n_heads: 8 #num of heads
+
+  #fc_dropout: 0.05 #fully connected dropout
+  #mlp_drop: 0.3 #output type
+  #mlp_hidden: 64 #hidden layer dimension of model
+  # =====================================
+  d_model: 8 #512
+  enc_in: 1 #21 #7 #encoder input size == enc_in
+
+  cf_dim: 32 #48 #feature dimension
+  cf_drop: 0.2 #dropout
+  cf_depth: 3 #transformer layer
+  cf_heads: 6 #multi-heads 수
+  cf_mlp: 128 #ff demention
+  cf_head_dim: 8 #32 #single-head 수
+
+  #아래는 정규화 코드서 사용됨
+  #cf_weight_decay: 0 #weight decay
+  #cf_p: 1 #patch type
+
+  dropout: 0.2 #0.05
+  head_dropout: 0 #head dropout
+
+  patch_len: 16 #patch length
+  padding_patch: None
+  subtract_last: 0 #0: subtract mean; 1: subtract last
+
+  revin: 1 #RevIN; True 1 False 0
+  affine: 0 #RevIN-affine; True 1 False 0
+  ablation: 0 #ablation study 012.
+  use_nys: 0 #use nystrom
+  stride: 16
+  individual: 1 #individual head; True 1 False 0
+
+  schedular_step: 19
+  schedular_gamma: 0.1
+  savedPath: "./SV_PARAM/"
+  savedLoadPath: "./SV_PARAM/VIT_date_2024-12-13__time_08-12-34_final.pt"
+  isEarlyEscape: false #모델 중간에 탈출하는지
+
+  #stepPrintProgress: epoch안 몇번쨰 batch마다 진행도(ith batch loss값)을 출력하는지
+  stepPrintProgress: 1000
+  usePreTrainedParams: false
+datasetOpts:
+  loader_workers: 2
+  train_epochs: 50 #train epochs
+  batch_size: 32
+  input_len: 96 #input sequence length == seq_len
+  pred_len: 96 #prediction sequence length
+  target_len: 48 # start token length == label_len
+  learning_rate: 0.0001
+exePlan:
+  #output_attention: False #whether to output attention in ecoder
+  lradj: "type3" #adjust learning rate
+  features: M
+  #forecasting task, options:[M, S, MS];
+  # M: multivariate predict multivariate,
+  # S: univariate predict univariate,
+  # MS: multivariate predict univariate
+preprocess:
+  inputPath: ./DATA_SET/dataset/
+  metadPath: ./DATA_SET/dataset.csv
+  outputPath: ./CQT_DATA/
+  labelRealPath: ./CQT_DATA/real
+  labelFakePath: ./CQT_DATA/fake
+  #predictSetPath: ./CQT_DATA/_PRED.csv
+  forced: False
